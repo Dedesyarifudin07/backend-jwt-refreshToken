@@ -16,8 +16,9 @@ const refreshToken = async(req,res) => {
                 }
             )
             //tampilkan akun berdasarkan name,email,dan password
-            return res.json({accesToken,_id:dbAKun._id ,email:decode.email});
+            return res.status(200).json({accesToken,_id:dbAKun._id ,email:decode.email});
            })
+           return res.status(200).json({message:'ok'})
     }catch(error){
         res.status(404).json({msg:error})
     }

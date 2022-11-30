@@ -1,16 +1,17 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
 const akunControolers =require('./Route/akunControollers');
 const cookieParser = require('cookie-parser');
-app.use(express.urlencoded({extended:true}));
-app.use(express.json())
+const cors = require('cors');
+require('dotenv').config();
 
 //membuat endpoint
 app.get('/',(req,res) => {
     res.send("hallo");
 })
-
+app.use(cors({  credentials: true ,origin:'http://localhost:5173'}));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json())
 app.use(cookieParser());
 app.use('/akun',akunControolers);
 
